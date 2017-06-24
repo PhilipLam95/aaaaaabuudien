@@ -23,7 +23,8 @@ namespace BUUDIEN
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            PhieuGuiTien f2 = new PhieuGuiTien();
+            f2.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)

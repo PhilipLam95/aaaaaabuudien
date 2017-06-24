@@ -58,6 +58,7 @@
             this.btnTienlai = new System.Windows.Forms.Button();
             this.btnLapPhieu = new System.Windows.Forms.Button();
             this.khachhangGBOX = new System.Windows.Forms.GroupBox();
+            this.tongtienrutTBOX = new System.Windows.Forms.MaskedTextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.tienlaiTBOX = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -70,7 +71,6 @@
             this.magdvTBOX = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.tongtienrutTBOX = new System.Windows.Forms.MaskedTextBox();
             this.thongtinkhachhangGbox.SuspendLayout();
             this.thongtindichvuGBOX.SuspendLayout();
             this.chucnangGBOX.SuspendLayout();
@@ -422,6 +422,16 @@
             this.khachhangGBOX.TabStop = false;
             this.khachhangGBOX.Text = "Khách hàng";
             // 
+            // tongtienrutTBOX
+            // 
+            this.tongtienrutTBOX.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tongtienrutTBOX.Location = new System.Drawing.Point(126, 86);
+            this.tongtienrutTBOX.Name = "tongtienrutTBOX";
+            this.tongtienrutTBOX.Size = new System.Drawing.Size(163, 22);
+            this.tongtienrutTBOX.TabIndex = 24;
+            this.tongtienrutTBOX.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.tongtienrutTBOX_MaskInputRejected);
+            this.tongtienrutTBOX.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tongtienrutTBOX_KeyPress_1);
+            // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.CustomFormat = "dd/MM/yyyy";
@@ -539,15 +549,6 @@
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(0, 13);
             this.label11.TabIndex = 10;
-            // 
-            // tongtienrutTBOX
-            // 
-            this.tongtienrutTBOX.Location = new System.Drawing.Point(126, 86);
-            this.tongtienrutTBOX.Name = "tongtienrutTBOX";
-            this.tongtienrutTBOX.Size = new System.Drawing.Size(163, 22);
-            this.tongtienrutTBOX.TabIndex = 24;
-            this.tongtienrutTBOX.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.tongtienrutTBOX_MaskInputRejected);
-            this.tongtienrutTBOX.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tongtienrutTBOX_KeyPress_1);
             // 
             // PhieuRutTien
             // 

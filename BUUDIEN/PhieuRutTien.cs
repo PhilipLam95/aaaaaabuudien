@@ -192,7 +192,7 @@ namespace BUUDIEN
                     }
                     if (x == 1)
                     {
-                        MessageBox.Show(" TIEN BAN RUT QUA LON");
+                        MessageBox.Show("TIEN BAN RUT QUA LON");
                     }                    
                    
                     
@@ -237,19 +237,22 @@ namespace BUUDIEN
                 string sotienGui = sotienguiTBOX.Text.ToString();
                 /*string ngRut = dateTimePicker1.Value.ToString();*/
                 string kyHan = kyhanTBOX.Text.ToString();
+               
 
                 // truyen bien vao thuoc tinh khai bao trong sp
                 string[] name = { "@NGAYGUI", "@NGAYDENHAN", "@NGAYRUT", "@LAISUAT" ,"@SOTIENGUI" ,"@KYHAN"};
                 object[] param = { ngGUI, ngDenHan, ngRut, laiSuat, sotienGui, kyHan };
                 DataTable tien_lai = DBAcess.ExecuteQuery("SP_TINHLAISUAT", name, param, 6);
                 
+                
 
                 ngayguiTBOX.DataBindings.Clear();
                 ngaydenhanTBOX.DataBindings.Clear();
                 dateTimePicker1.DataBindings.Clear();
-                tienlaiTBOX.DataBindings.Clear();
-
+                MessageBox.Show("TOI DAY");
                 tienlaiTBOX.DataBindings.Add("TEXT", tien_lai, "TIENLAI");
+                
+                tienlaiTBOX.DataBindings.Clear();
                 
                
 
