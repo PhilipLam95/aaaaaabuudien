@@ -51,6 +51,7 @@ namespace BUUDIEN
                 object[] param = { username };
                 SqlDataReader reader = DBAcess.ExecSqlDataReader("SP_DANGNHAP", name, param, 1);
                 
+                
                 if (reader == null)
                 {
                     return false;
@@ -68,6 +69,9 @@ namespace BUUDIEN
                     MessageBox.Show("Dang Nhap Thanh Cong! Xin Chào: " + hoten);*/
                     string hoten = DBAcess.HOTEN = reader["HOTEN"].ToString();
                     string magdv = DBAcess.MAGDV = reader["MAGDV"].ToString();
+                    string role = DBAcess.ROLE = reader["ROLES"].ToString();
+                   
+                   
 
                     magdvTBOX.Text = magdv;
                     PhieuRutTien fphieurut = new PhieuRutTien();

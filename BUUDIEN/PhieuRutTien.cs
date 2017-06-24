@@ -13,12 +13,13 @@ namespace BUUDIEN
     public partial class PhieuRutTien : Form
     {
         private DataTable maphieu;
+        
         public PhieuRutTien()
         {
             InitializeComponent();
         }
 
-        SqlConnection conn = new SqlConnection(@"Data Source=DELL-PC\SERVER;Initial Catalog=TKBUUDIEN;Integrated Security=True");
+        
         
         DataTable dt = new DataTable();
         public string _button1
@@ -29,16 +30,15 @@ namespace BUUDIEN
         {
             AddMaPhieutoCompo();
             comboBox1.SelectedIndex = 0;
-            btnTienlai.Enabled = false;
+            
             btnGhi.Enabled = false;
             button1.PerformClick();
             btnTienlai.PerformClick();
             magdvTBOX.Hide();
             btnGhi.Enabled = false;
             label11.Text = DBAcess.MAGDV; 
-           
-
         }
+
 
      
 
@@ -185,9 +185,19 @@ namespace BUUDIEN
                     int x = DBAcess.ExecuteNonQuery("SP_THEMPHIEURUT", name, param, 6);
                     if (x == 0)
                     {
-                        MessageBox.Show("SỐ TIỀN BẠN RÚT QUÁ LỚN");
+                        MessageBox.Show("RUT TIEN THANH CONG");
+                        tongtienrutTBOX.DataBindings.Clear();
+                        tienlaiTBOX.DataBindings.Clear();
+                        sotienguiTBOX.DataBindings.Clear();
                     }
-                    tongtienrutTBOX.DataBindings.Clear();
+                    if (x == 1)
+                    {
+                        MessageBox.Show(" TIEN BAN RUT QUA LON");
+                    }                    
+                   
+                    
+                    
+                    
                 
             }
             catch
@@ -202,30 +212,24 @@ namespace BUUDIEN
             try
             {
 
-                
-                    /* Chuyen kieu string sang date time */
+                  /* Chuyen kieu string sang date time */
                     DateTime ngGUI = DateTime.Parse(ngayguiTBOX.Text.ToString());
                     ngayguiTBOX.Text = ngGUI.ToString("dd/MM/yyyy");
                   
-                    
+
                   /*  DateTime ngGUI = DateTime.Parse(DateTime.Now.ToShortDateString());
                     string ngayguiTBOX = ngGUI.Day + "/" + ngGUI.Month + "/" + ngGUI.Year;
                    MessageBox.Show(ngayguiTBOX);*/
-                
                
                     DateTime ngDenHan = DateTime.Parse(ngaydenhanTBOX.Text.ToString());
                     ngaydenhanTBOX.Text = ngDenHan.ToString("dd/MM/yyyy");
                     
-                                      
-                  
 
                     DateTime ngRut = DateTime.Parse(dateTimePicker1.Value.ToString());
                     dateTimePicker1.Text = ngRut.ToShortDateString();
                     
-                 
-               
+                    
 
-               
                 /*string maDV = madichvuTBOX.Text.ToString();*/
                 /*string ngGUI = ngayguiTBOX.Text.ToString();*/
                 /*string ngDenHan = ngaydenhanTBOX.Text.ToString();*/
@@ -235,9 +239,10 @@ namespace BUUDIEN
                 string kyHan = kyhanTBOX.Text.ToString();
 
                 // truyen bien vao thuoc tinh khai bao trong sp
-                string[] name = { "@SOTIENGUI", "@NGAYGUI", "@NGAYDENHAN", "@NGAYRUT", "@KYHAN" ,"@LAISUAT"};
-                object[] param = { sotienGui, ngGUI, ngDenHan, ngRut , kyHan, laiSuat};
+                string[] name = { "@NGAYGUI", "@NGAYDENHAN", "@NGAYRUT", "@LAISUAT" ,"@SOTIENGUI" ,"@KYHAN"};
+                object[] param = { ngGUI, ngDenHan, ngRut, laiSuat, sotienGui, kyHan };
                 DataTable tien_lai = DBAcess.ExecuteQuery("SP_TINHLAISUAT", name, param, 6);
+                
 
                 ngayguiTBOX.DataBindings.Clear();
                 ngaydenhanTBOX.DataBindings.Clear();
@@ -245,9 +250,13 @@ namespace BUUDIEN
                 tienlaiTBOX.DataBindings.Clear();
 
                 tienlaiTBOX.DataBindings.Add("TEXT", tien_lai, "TIENLAI");
+                
                
 
+                
+                tienlaiTBOX.Enabled = false;
                 btnGhi.Enabled = true;
+                btnTienlai.Enabled = false;
    
             }
             catch 
@@ -279,10 +288,37 @@ namespace BUUDIEN
            
         }
 
+        
+
+       
+
         private void tongtienrutTBOX_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
+            int n = Int32.Parse(tongtienrutTBOX.Text);//lay gia tri cua textbox
+            if (n < 1)
+            {
+                MessageBox.Show("moi ban nhap lai so tien");
+            }
+            if (n > 10)
+            {
+                MessageBox.Show("So tien toi da rut chi duoc 1 tỷ");
+            }
+        }
+        
 
-        }   
+        private void tongtienrutTBOX_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+                MessageBox.Show("TONG TIEN phai  là kieu  số ", "Thông Báo ");
+            }
+            //Char.IsDigit(e.KeyChar) --> kiểm tra xem phím vừa nhập vào textbox có phải là ký tự số hay không, hàm này trả về kiểu bool
+            /*Char.IsContro(e.KeyChar) --> kiểm tra xem phím vừa nhập vào textbox có phải là các ký tự điều khiển (các phím mũi tên,
+              Delete,Insert,backspace,space bar) hay không, mục đích dùng hàm này là để cho phép người dùng xóa số trong trường hợp nhập sai.*/
+            
+        }
+      
 
       
     }

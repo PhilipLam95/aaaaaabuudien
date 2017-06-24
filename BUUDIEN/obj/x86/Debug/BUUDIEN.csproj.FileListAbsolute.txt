@@ -7,7 +7,6 @@ c:\users\dellinspiron15-5000\documents\visual studio 2010\Projects\BUUDIEN\BUUDI
 C:\Users\DELLinspiron15-5000\documents\visual studio 2010\Projects\BUUDIEN\BUUDIEN\bin\Debug\BUUDIEN.exe
 C:\Users\DELLinspiron15-5000\documents\visual studio 2010\Projects\BUUDIEN\BUUDIEN\bin\Debug\BUUDIEN.pdb
 C:\Users\DELLinspiron15-5000\documents\visual studio 2010\Projects\BUUDIEN\BUUDIEN\obj\x86\Debug\BUUDIEN.exe
-C:\Users\DELLinspiron15-5000\Documents\Visual Studio 2010\Projects\BUUDIEN\BUUDIEN\obj\x86\Debug\BUUDIEN.csprojResolveAssemblyReference.cache
 C:\Users\DELLinspiron15-5000\Documents\Visual Studio 2010\Projects\BUUDIEN\BUUDIEN\obj\x86\Debug\BUUDIEN.PhieuGuiTien.resources
 C:\Users\DELLinspiron15-5000\Documents\Visual Studio 2010\Projects\BUUDIEN\BUUDIEN\obj\x86\Debug\BUUDIEN.PhieuRutTien.resources
 C:\Users\DELLinspiron15-5000\Documents\Visual Studio 2010\Projects\BUUDIEN\BUUDIEN\obj\x86\Debug\BUUDIEN.TaoGDV.resources

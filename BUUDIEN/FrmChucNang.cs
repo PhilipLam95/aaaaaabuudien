@@ -31,5 +31,18 @@ namespace BUUDIEN
             PhieuRutTien f1 = new PhieuRutTien();
             f1.Show();
         }
+
+        private void FrmChucNang_Load(object sender, EventArgs e)
+        {
+            
+            button3.Enabled = false;
+            if (DBAcess.ROLE == "ADMIN")
+            {
+                button3.Enabled = true;
+            }
+          
+        }
+
+       
     }
 }
